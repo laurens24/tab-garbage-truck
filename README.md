@@ -2,7 +2,7 @@
 
 Welcome to the Tableau Cloud Garbage Truck Script!
 
-This repository is intended for folks with 0 scripting or coding experience to be able to use a Scripting step in a Tableau Prep flow to move all of your unused workbooks to a single project folder in Tableau Cloud, making it easy to audit and purge stale content.
+This repository is intended for Tableau Cloud Admins with 0 scripting or coding experience to be able to use a Scripting step in a Tableau Prep flow to move all of your unused workbooks to a single project folder in Tableau Cloud, making it easy to audit and purge stale content.
 
 
 Before we get started, there are a few steps you'll need to take...
@@ -19,7 +19,9 @@ Before we get started, there are a few steps you'll need to take...
 
 For more explanation / background about Git and how it's used, [take a look at this](https://info201.github.io/git-basics.html#what-is-this-git-thing-anyway)
 
-2. Create a new Tableau Prep Flow, and be sure you're logged in to your Tableau Cloud site
+2. If you haven't already, create a project folder as a destination for your stale content
+
+2. Create a new Tableau Prep Flow
 
 _Note: You must use the Desktop application of Tableau Prep Builder. Tableau Cloud does not currently support running Python scripts in browser_
 
@@ -29,8 +31,14 @@ _Note: You must use the Desktop application of Tableau Prep Builder. Tableau Clo
 
 5. Add a "Script" step to the data source in your Prep Flow
 
-6. Edit the {insert value} fields in the xyz.csv to have the correct values in them
+6. Edit the {insert value} fields in the **garbage-truck-params.csv** to have the correct values in them
 
-- How to get the PAT info
-- How to get your POD
+- To generate a Personal Access Token, go to your **My Account Settings** page, found by clicking your profile photo in the top right of your screen. Scroll down to the section entitled **Personal Access Tokens**. Type in a new name for your PAT- it can be anything you want. Now click **Create new token**- a very long string of text should appear in a window. This is your PAT secret- copy and paste it somewhere on your machine where you won't lose it. You can only generate a PAT secret once.
+   - Replace {insert value} below the `pat-name` column the with PAT name you just created
+   - Replace {insert value} below the `pat-secret` column the with PAT secret you just saved
+
+- Every Tableau Cloud URL starts like this- `https://{pod name}.online.tableau.com/#/site/{site name}/`
+  - Replace {insert value} below the `tab-pod` column the with text in the section that we called `{pod name}` above
+  - Replace {insert value} below the `site-name` column the with text in the section that we called `{site name}` above
+
 - How to get the LUID for your folder
