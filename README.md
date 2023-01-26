@@ -33,6 +33,9 @@ For more explanation / background about Git and how it's used, [take a look at t
 
 - Replace {insert value} below the `dest-name` column the with the name of the project folder you'd like to move your stale content to
 
+4. Install Tabpy https://github.com/tableau/TabPy/blob/master/docs/server-install.md
+5. 
+
 ### Create a new Tableau Prep Flow
 
 _Note: You must use the Desktop application of Tableau Prep Builder. Tableau Cloud does not currently support running Python scripts in browser_
@@ -41,8 +44,15 @@ _Note: You must use the Desktop application of Tableau Prep Builder. Tableau Clo
 
 2. Save your prep flow in the tab-garbage-truck folder that is now on your Desktop
 
-3. Add a "Script" step to the data source in your Prep Flow
+3. Install 
+
+3. Configure TabPy Server for prep https://help.tableau.com/current/prep/en-us/prep_scripts_TabPy.htm#connect-to-your-tableau-python-tabpy-server
+4. Add a "Script" step to the data source in your Prep Flow
 
 4. 
 
+4. Select the **Tableau Python (TabPy) Server** radio button under **Connection type**
+5. Browse for the **tab_garbage_truck.py** file in the **tab-garbage-truck** folder on your desktop, and select it
+6. Under Function Name, type `garbage_truck`
+7. 
 
