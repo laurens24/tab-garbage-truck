@@ -1,6 +1,4 @@
-# Tableau Garbage Truck
-
-Welcome to the Tableau Cloud Garbage Truck Script!
+# Welcome to the Tableau Cloud Garbage Truck! :articulated_lorry:
 
 This repository is intended for Tableau Cloud Admins with 0 scripting or coding experience to be able to use a Scripting step in a Tableau Prep flow to move all of your unused workbooks to a single project folder in Tableau Cloud, making it easy to audit and purge stale content.
 
