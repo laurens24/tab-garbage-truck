@@ -21,7 +21,7 @@ For more explanation / background about Git and how it's used, [take a look at t
 
 2. If you haven't already, create a project folder as a destination for your stale content
 
-6. Edit the {insert value} fields in the **garbage-truck-params.csv** to have the correct values in them
+3. Edit the {insert value} fields in the **garbage-truck-params.csv** to have the correct values in them
 
 - To generate a Personal Access Token, go to your **My Account Settings** page, found by clicking your profile photo in the top right of your screen. Scroll down to the section entitled **Personal Access Tokens**. Type in a new name for your PAT- it can be anything you want. Now click **Create new token**- a very long string of text should appear in a window. This is your PAT secret- copy and paste it somewhere on your machine where you won't lose it. You can only generate a PAT secret once.
    - Replace {insert value} below the `pat-name` column the with PAT name you just created
@@ -33,8 +33,7 @@ For more explanation / background about Git and how it's used, [take a look at t
 
 - Replace {insert value} below the `dest-name` column the with the name of the project folder you'd like to move your stale content to
 
-4. Install Tabpy https://github.com/tableau/TabPy/blob/master/docs/server-install.md
-5. 
+4. [Install Tabpy](https://github.com/tableau/TabPy/blob/master/docs/server-install.md) using the command line
 
 ### Create a new Tableau Prep Flow
 
@@ -42,17 +41,14 @@ _Note: You must use the Desktop application of Tableau Prep Builder. Tableau Clo
 
 1. Connect to the Admin Insights "Site Content" data source from your Cloud site
 
-2. Save your prep flow in the tab-garbage-truck folder that is now on your Desktop
+2. Save your prep flow in the tab-garbage-truck folder that is now on your Desktop 
 
-3. Install 
-
-3. Configure TabPy Server for prep https://help.tableau.com/current/prep/en-us/prep_scripts_TabPy.htm#connect-to-your-tableau-python-tabpy-server
-4. Add a "Script" step to the data source in your Prep Flow
-
-4. 
+3. Add a "Script" step to the data source in your Prep Flow
 
 4. Select the **Tableau Python (TabPy) Server** radio button under **Connection type**
-5. Browse for the **tab_garbage_truck.py** file in the **tab-garbage-truck** folder on your desktop, and select it
-6. Under Function Name, type `garbage_truck`
-7. 
 
+6. [Follow these steps](https://help.tableau.com/current/prep/en-us/prep_scripts_TabPy.htm#connect-to-your-tableau-python-tabpy-server) to configure your TabPy Server for prep 
+7. Browse for the **tab_garbage_truck.py** file in the **tab-garbage-truck** folder on your desktop, and select it
+8. Under Function Name, type `garbage_truck`
+9. Add an output step. This will simply output your original Site Content dataframe, so it doesn't matter what kind of output it is. You just need an output step to run a prep flow. 
+10. Click run, and take a look at your destination folder!
