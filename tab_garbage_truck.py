@@ -2,10 +2,6 @@ import pandas as pd
 import tableauserverclient as TSC
 import csv
 
-import logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    filename="tsc.log", level="DEBUG")
-
 # makes a list of all LUIDs for workbooks that haven't been accessed recently
 def check_null_and_add_id(df, field, id_field='Item LUID', type_field='Item Type', null_list=[]):
     for index, row in df.iterrows():
@@ -14,7 +10,6 @@ def check_null_and_add_id(df, field, id_field='Item LUID', type_field='Item Type
     return null_list
 
 def garbage_truck(df):
-    
     
     pat_name = {name}
     pat_secret= {secret}
@@ -47,11 +42,11 @@ def garbage_truck(df):
             
         #iterate through all workbooks on the site and move them
         for luid in null_list:
-            print(i)
+          
             # get the workbook item from the site
             workbook = server.workbooks.get_by_id(luid)
 
-            # change to the new project ID
+            # change to the new project ID, and rename the workbook to include the previous project folder
             workbook.project_id = dest_id
             workbook.name = workbook.name + ':  From ' + workbook.project_name + ' Project'
 
