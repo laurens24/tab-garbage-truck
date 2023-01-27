@@ -18,11 +18,11 @@ df = pd.read_csv('site_content.csv')
 def garbage_truck(df):
     
     
-    pat_name = 'Yeehaw'
-    pat_secret= 'nnRnhSLkTICbxj8MbN+H1g==:2ibYMOCW3cUI4EpywCK3kA4qEBtJnHwQ'
-    site_name= 'laurensmithssite'
-    tab_url= 'https://' + 'us-west-2b' + '.online.tableau.com'
-    dest_name= 'Destination'
+    pat_name = {name}
+    pat_secret= {secret}
+    site_name= {site name}
+    tab_url= 'https://' + {pod} + '.online.tableau.com'
+    dest_name= {folder}
 
     #authenticate to Tableau Cloud
     tableau_auth = TSC.PersonalAccessTokenAuth(pat_name, pat_secret, site_id=site_name)
