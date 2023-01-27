@@ -13,8 +13,6 @@ def check_null_and_add_id(df, field, id_field='Item LUID', type_field='Item Type
             null_list.append(row[id_field])
     return null_list
 
-df = pd.read_csv('site_content.csv')
-
 def garbage_truck(df):
     
     
