@@ -29,7 +29,7 @@ For more explanation / background about Git and how it's used, [take a look at t
 
 - Replace {insert value} below the `dest-name` column the with the name of the project folder you'd like to move your stale content to. This can be a folder that already exists, or a name for a new project folder
 
-4. [Install and run Tabpy](https://github.com/tableau/TabPy/blob/master/docs/server-install.md) using the command line
+3. [Install and run Tabpy](https://github.com/tableau/TabPy/blob/master/docs/server-install.md) using the command line
 
 ### Create a new Tableau Prep Flow
 
