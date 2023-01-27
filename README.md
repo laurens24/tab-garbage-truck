@@ -17,9 +17,7 @@ This repository is intended for Tableau Cloud Admins with 0 scripting or coding 
 
 For more explanation / background about Git and how it's used, [take a look at this](https://info201.github.io/git-basics.html#what-is-this-git-thing-anyway)
 
-2. If you haven't already, create a project folder as a destination for your stale content
-
-3. Edit the {insert value} fields in the **garbage-truck-params.csv** to have the correct values in them
+2. Edit the {insert value} fields in the **garbage-truck-params.csv** to have the correct values in them
 
 - To generate a Personal Access Token, go to your **My Account Settings** page, found by clicking your profile photo in the top right of your screen. Scroll down to the section entitled **Personal Access Tokens**. Type in a new name for your PAT- it can be anything you want. Now click **Create new token**- a very long string of text should appear in a window. This is your PAT secret- copy and paste it somewhere on your machine where you won't lose it. You can only generate a PAT secret once.
    - Replace {insert value} below the `pat-name` column the with PAT name you just created
@@ -29,9 +27,9 @@ For more explanation / background about Git and how it's used, [take a look at t
   - Replace {insert value} below the `tab-pod` column the with text in the section that we called `{pod name}` above
   - Replace {insert value} below the `site-name` column the with text in the section that we called `{site name}` above
 
-- Replace {insert value} below the `dest-name` column the with the name of the project folder you'd like to move your stale content to
+- Replace {insert value} below the `dest-name` column the with the name of the project folder you'd like to move your stale content to. This can be a folder that already exists, or a name for a new project folder
 
-4. [Install Tabpy](https://github.com/tableau/TabPy/blob/master/docs/server-install.md) using the command line
+4. [Install and run Tabpy](https://github.com/tableau/TabPy/blob/master/docs/server-install.md) using the command line
 
 ### Create a new Tableau Prep Flow
 
