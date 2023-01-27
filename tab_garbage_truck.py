@@ -2,6 +2,10 @@ import pandas as pd
 import tableauserverclient as TSC
 import csv
 
+import logging
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    filename="tsc.log", level="DEBUG")
+
 # makes a list of all LUIDs for workbooks that haven't been accessed recently
 def check_null_and_add_id(df, field, id_field='Item LUID', type_field='Item Type', null_list=[]):
     for index, row in df.iterrows():
@@ -9,47 +13,51 @@ def check_null_and_add_id(df, field, id_field='Item LUID', type_field='Item Type
             null_list.append(row[id_field])
     return null_list
 
+df = pd.read_csv('site_content.csv')
+
 def garbage_truck(df):
-
-    #get values from csv
-    pat_name, pat_secret, site_name, tab_url, dest_name = '', '', '', '', ''
-
-    with open('garbage-truck-params.csv', 'r') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            pat_name= row["pat-name"]
-            pat_secret= row["pat-secret"]
-            site_name= row["site-name"]
-            tab_url= 'https://' + row["tab-pod"] + '.online.tableau.com'
-            dest_name= row["dest-name"]
-            break
+    
+    
+    pat_name = 'Yeehaw'
+    pat_secret= 'nnRnhSLkTICbxj8MbN+H1g==:2ibYMOCW3cUI4EpywCK3kA4qEBtJnHwQ'
+    site_name= 'laurensmithssite'
+    tab_url= 'https://' + 'us-west-2b' + '.online.tableau.com'
+    dest_name= 'Destination'
 
     #authenticate to Tableau Cloud
     tableau_auth = TSC.PersonalAccessTokenAuth(pat_name, pat_secret, site_id=site_name)
     server = TSC.Server(tab_url, use_server_version=True)
     with server.auth.sign_in(tableau_auth):
-
+        
         #get a list of all workbooks that have a last accessed date of null
         null_list = check_null_and_add_id(df, 'Last Accessed At (Local)')
+        
+        dest_id=''
 
-        #collection of all project names and ids
-        proj_id_name_df = pd.DataFrame(columns=['Name', 'Id'])
+        #fetching the LUID of the project folder you designated 
+        all_projects, pagination_item = server.projects.get()
+        for i, proj in enumerate(all_projects):
+            if proj.name == dest_name:
+                dest_id=proj.id
 
-        #fetching the LUID of the project folder you designated
-        all_project_items, pagination_item = server.projects.get()
-        for i, proj in enumerate(all_project_items):
-            new_item = {'Name': proj.name, 'Id': proj.id}
-            proj_id_name_df.loc[i] = new_item
-        dest_id = proj_id_name_df.loc[proj_id_name_df['Name'] == dest_name, 'Id'].values[0]
-
+        # if you haven't created the project yet, creates a new one with your name 
+        if dest_id == '':
+            new_project = TSC.ProjectItem(name=dest_name, content_permissions='LockedToProject', 
+                                          description='Destination folder for the Tableau Garbage Truck script')
+            new_project = server.projects.create(new_project)
+            dest_id=new_project.id
+            
         #iterate through all workbooks on the site and move them
         for luid in null_list:
+            print(i)
             # get the workbook item from the site
             workbook = server.workbooks.get_by_id(luid)
 
             # change to the new project ID
             workbook.project_id = dest_id
+            workbook.name = workbook.name + ':  From ' + workbook.project_name + ' Project'
 
             # call the update method
             workbook = server.workbooks.update(workbook)
+            
     return df
