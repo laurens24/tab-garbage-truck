@@ -17,17 +17,17 @@ This repository is intended for Tableau Cloud Admins with 0 scripting or coding 
 
 For more explanation / background about Git and how it's used, [take a look at this](https://info201.github.io/git-basics.html#what-is-this-git-thing-anyway)
 
-2. Edit the {insert value} fields in the **garbage-truck-params.csv** to have the correct values in them
+2. Edit the values in the python file with curly brackets around them
 
 - To generate a Personal Access Token, go to your **My Account Settings** page, found by clicking your profile photo in the top right of your screen. Scroll down to the section entitled **Personal Access Tokens**. Type in a new name for your PAT- it can be anything you want. Now click **Create new token**- a very long string of text should appear in a window. This is your PAT secret- copy and paste it somewhere on your machine where you won't lose it. You can only generate a PAT secret once.
-   - Replace {insert value} below the `pat-name` column the with PAT name you just created
-   - Replace {insert value} below the `pat-secret` column the with PAT secret you just saved
+   - Replace `{name}` with the PAT name you just created
+   - Replace `{secret}` with the PAT secret you just saved
 
-- Every Tableau Cloud URL starts like this- `https://{pod name}.online.tableau.com/#/site/{site name}/`
-  - Replace {insert value} below the `tab-pod` column the with text in the section that we called `{pod name}` above
-  - Replace {insert value} below the `site-name` column the with text in the section that we called `{site name}` above
+- Every Tableau Cloud URL starts like this- https://**{pod}**.online.tableau.com/#/site/**{site name}**/
+  - Replace `{pod}` within the `tab_url` variable with the text in the section that we called **{pod}** above
+  - Replace `{site name}` with the text in the section that we called **{site name}** above
 
-- Replace {insert value} below the `dest-name` column the with the name of the project folder you'd like to move your stale content to. This can be a folder that already exists, or a name for a new project folder
+- Replace {folder} with the name of the project folder you'd like to move your stale content to. This can be a folder that already exists, or a name for a new project folder
 
 3. [Install and run Tabpy](https://github.com/tableau/TabPy/blob/master/docs/server-install.md) using the command line
 
@@ -48,3 +48,5 @@ _Note: You must use the Desktop application of Tableau Prep Builder. Tableau Clo
 8. Under Function Name, type `garbage_truck`
 9. Add an output step. This will simply output your original Site Content dataframe, so it doesn't matter what kind of output it is. You just need an output step to run a prep flow. 
 10. Click run, and take a look at your destination folder!
+
+_Note: Don't run it more than once. You'll have some workbooks with very long names_
