@@ -27,7 +27,7 @@ For more explanation / background about Git and how it's used, [take a look at t
   - Replace `{pod}` within the `tab_url` variable with the text in the section that we called **{pod}** above
   - Replace `{site name}` with the text in the section that we called **{site name}** above
 
-- Replace {folder} with the name of the project folder you'd like to move your stale content to. This can be a folder that already exists, or a name for a new project folder
+- Replace `{folder}` with the name of the project folder you'd like to move your stale content to. This can be a folder that already exists, or a name for a new project folder
 
 3. [Install and run Tabpy](https://github.com/tableau/TabPy/blob/master/docs/server-install.md) using the command line
 
